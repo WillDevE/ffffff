@@ -35,16 +35,40 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
     
-  const navbar = document.querySelector('.navbar');
-  const body = document.querySelector('body');
-  const navbarPlaceholder = document.querySelector('.navbar-placeholder');
-
-  navbar.addEventListener('mouseover', function () {
-    body.classList.add('navbar-displayed');
+    const navbar = document.querySelector('.navbar');
+    const body = document.querySelector('body');
+    const navbarPlaceholder = document.querySelector('.navbar-placeholder');
+  
+    navbar.addEventListener('mouseover', function () {
+      body.classList.add('navbar-displayed');
+    });
+  
+    navbar.addEventListener('mouseout', function () {
+      body.classList.remove('navbar-displayed');
+    });
+  
+    // Add this function to handle page transitions
+    function navigateToPage(pageName) {
+      body.classList.add('page-transition');
+  
+      // Wait for the transition to complete before navigating
+      setTimeout(function () {
+        window.location.href = pageName;
+      }, 500); // Adjust the timeout based on your transition duration
+    }
+  
+    // Update the navigation links to use the navigateToPage function
+    const homeLink = document.querySelector('a[href="#home"]');
+    const membersLink = document.querySelector('a[href="members.html#home"]');
+  
+    homeLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      navigateToPage('index.html');
+    });
+  
+    membersLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      navigateToPage('members.html');
+    });
   });
-
-  navbar.addEventListener('mouseout', function () {
-    body.classList.remove('navbar-displayed');
-  });
-});
 
