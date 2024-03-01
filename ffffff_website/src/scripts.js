@@ -34,41 +34,29 @@ document.addEventListener('DOMContentLoaded', function () {
         modes: { grab: { distance: 200, line_linked: { opacity: 1 } }, bubble: { distance: 200, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
       },
     });
-    
+
     const navbar = document.querySelector('.navbar');
     const body = document.querySelector('body');
     const navbarPlaceholder = document.querySelector('.navbar-placeholder');
-  
-    navbar.addEventListener('mouseover', function () {
-      body.classList.add('navbar-displayed');
-    });
-  
-    navbar.addEventListener('mouseout', function () {
-      body.classList.remove('navbar-displayed');
-    });
-  
-    // Add this function to handle page transitions
-    function navigateToPage(pageName) {
-      body.classList.add('page-transition');
-  
-      // Wait for the transition to complete before navigating
-      setTimeout(function () {
-        window.location.href = pageName;
-      }, 500); // Adjust the timeout based on your transition duration
-    }
-  
-    // Update the navigation links to use the navigateToPage function
-    const homeLink = document.querySelector('a[href="#home"]');
-    const membersLink = document.querySelector('a[href="members.html#home"]');
-  
-    homeLink.addEventListener('click', function (event) {
-      event.preventDefault();
-      navigateToPage('index.html');
-    });
-  
-    membersLink.addEventListener('click', function (event) {
-      event.preventDefault();
-      navigateToPage('members.html');
-    });
-  });
 
+    navbar.addEventListener('mouseover', function () {
+        body.classList.add('navbar-displayed');
+    });
+
+    navbar.addEventListener('mouseout', function () {
+        body.classList.remove('navbar-displayed');
+    });
+
+    // Add smooth transition on navigation link click
+    const navLinks = document.querySelectorAll('.navbar a');
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetSection = document.querySelector(link.getAttribute('href'));
+            body.classList.remove('navbar-displayed');
+            setTimeout(() => {
+                window.location.href = link.getAttribute('href');
+            }, 500); // Adjust the time to match the transition time
+        });
+    });
+});

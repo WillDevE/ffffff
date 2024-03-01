@@ -109,15 +109,22 @@ body:hover .navbar-placeholder {
   background-color: #161616;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line */
+  justify-content: space-between; /* Distributes cards evenly with space at the sides */
+}
+
 .card {
-  margin: 10px;
+  flex: 0 0 auto; /* Makes cards shrink to content, grow to available space */
+  max-width: 90%;  /* Sets a maximum width for each card */
+  margin: 10px auto; /* Centers cards horizontally with each row */
   background-color: #1a1a1a;
   padding: 14px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
 .card:hover {
   transform: scale(1.01);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -133,4 +140,10 @@ body:hover .navbar-placeholder {
   color: white;
   text-align: center;
   padding: 15px 0;
+}
+
+.portrait-img {
+  width: 40%;
+  object-fit: cover;
+  border-radius: 30%;
 }
