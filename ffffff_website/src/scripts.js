@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbarPlaceholder = document.querySelector('.navbar-placeholder');
 
     navbar.addEventListener('mouseover', function () {
-        body.classList.add('navbar-displayed');
+        body.classList.add('navbar-displayed'); // Remove this line
     });
 
     navbar.addEventListener('mouseout', function () {
-        body.classList.remove('navbar-displayed');
+        body.classList.remove('navbar-displayed'); // Remove this line
     });
 
     // Add smooth transition on navigation link click
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetSection = document.querySelector(link.getAttribute('href'));
-            body.classList.remove('navbar-displayed');
+            // body.classList.remove('navbar-displayed'); // Remove this line
             setTimeout(() => {
                 window.location.href = link.getAttribute('href');
-            }, 500); // Adjust the time to match the transition time
+            }, 0); // Set transition time to 0 for immediate transition
         });
     });
 });
