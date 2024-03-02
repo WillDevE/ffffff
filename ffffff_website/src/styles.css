@@ -1,8 +1,22 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #111111;
+  background: linear-gradient(-45deg, #181818, #111111, #0c0c0c, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   color: #ffffff;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Navigation Bar Placeholder */
@@ -96,16 +110,16 @@ body {
   background: white;
   color: #111111;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Compartmentalized Content - Card */
 .content-card {
   padding: 2px 0;
-  background-color: #161616;
+  background-color: #16161600;
 }
 
 .card-container {
+  background: none;
   display: flex;
   flex-wrap: wrap; /* Allows cards to wrap to the next line */
   justify-content: space-between; /* Distributes cards evenly with space at the sides */
@@ -117,13 +131,7 @@ body {
   margin: 10px auto; /* Centers cards horizontally with each row */
   background-color: #1a1a1a;
   padding: 14px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 
 .card h2 {
@@ -145,7 +153,7 @@ body {
   border-radius: 30%;
 }
 
-/* Animations */
+/* Hero text Animations */
 
 .hero-text {
   position: relative;
@@ -162,19 +170,20 @@ body {
   height: 100%;
   color: transparent;
   -webkit-text-stroke: 0.3px #ffffff;
+  opacity: 1; /* Start with opacity 0 */
 }
 
 .hero-text::before {
-  animation: textIntroBefore 3s ease-out both;
+  animation: textIntroBefore 2s ease-out both;
 }
 
 .hero-text::after {
-  animation: textIntroAfter 3s ease-out both;
+  animation: textIntroAfter 2s ease-out both;
 }
 
 @keyframes textIntro {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
   100% {
     opacity: 1;
@@ -182,23 +191,23 @@ body {
 }
 
 @keyframes textIntroBefore {
-  0% {
-    transform: translate(-40px, -40px);
-    opacity: 1;
-  }
   100% {
-    transform: translate(-3px, -3px);
-    opacity: 0.2;
+    transform: translate(0px , -15px);
+    opacity: 0.3; 
+  }
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 0.9;
   }
 }
 
 @keyframes textIntroAfter {
-  0% {
-    transform: translate(40px, 40px);
-    opacity: 1;
-  }
   100% {
-    transform: translate(3px, 3px);
-    opacity: 0.2;
+    transform: translate(0px , 15px);
+    opacity: 0.3; 
+  }
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 0.9; 
   }
 }
