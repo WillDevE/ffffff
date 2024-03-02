@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
           line_linked: { enable: false },
           move: {
               enable: true,
-              speed: 1,
+              speed: 0.2,
               direction: 'top',
               random: true,
               straight: false,
