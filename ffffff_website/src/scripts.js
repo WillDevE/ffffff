@@ -34,29 +34,27 @@ document.addEventListener('DOMContentLoaded', function () {
         modes: { grab: { distance: 200, line_linked: { opacity: 1 } }, bubble: { distance: 200, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
       },
     });
-
     const navbar = document.querySelector('.navbar');
     const body = document.querySelector('body');
     const navbarPlaceholder = document.querySelector('.navbar-placeholder');
 
     navbar.addEventListener('mouseover', function () {
-        body.classList.add('navbar-displayed'); // Remove this line
+        body.classList.add('navbar-displayed');
     });
 
     navbar.addEventListener('mouseout', function () {
-        body.classList.remove('navbar-displayed'); // Remove this line
+        body.classList.remove('navbar-displayed');
     });
 
-    // Add smooth transition on navigation link click
-    const navLinks = document.querySelectorAll('.navbar a');
-    navLinks.forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetSection = document.querySelector(link.getAttribute('href'));
-            // body.classList.remove('navbar-displayed'); // Remove this line
-            setTimeout(() => {
-                window.location.href = link.getAttribute('href');
-            }, 0); // Set transition time to 0 for immediate transition
-        });
+    // Add touch events for mobile interaction
+    navbarPlaceholder.addEventListener('touchstart', function () {
+        body.classList.add('navbar-displayed');
+    });
+
+    body.addEventListener('touchstart', function (event) {
+        if (!navbar.contains(event.target) && !navbarPlaceholder.contains(event.target)) {
+            body.classList.remove('navbar-displayed');
+        }
     });
 });
+
